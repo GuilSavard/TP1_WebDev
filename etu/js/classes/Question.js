@@ -28,6 +28,19 @@ export class Question {
      * @returns {string}
      */
     lettreA(index) {
+        return "A";
+    }
+
+    lettreB(index) {
+        return "B";
+    }
+
+    lettreC(index) {
+        return "C";
+    }
+
+    lettreD(index) {
+        return "D";
     }
 
     get question(){
