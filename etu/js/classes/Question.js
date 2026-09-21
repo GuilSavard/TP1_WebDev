@@ -10,8 +10,16 @@ export class Question {
      * @param {string[]} data.options - Tableau des 4 propositions
      * @param {number} data.correct - Index de la bonne réponse (0..3)
      */
-    constructor({question, options, correct}) {
 
+
+    #question = "";
+    #options = [""]
+    #correct;
+
+    constructor({question, options, correct}) {
+        this.#question = question;
+        this.#options = options;
+        this.#correct = correct;
     }
 
     /**
@@ -21,4 +29,15 @@ export class Question {
      */
     lettreA(index) {
     }
+
+    get question(){
+        return this.#question
+    }
+    get options(){
+        return this.#options
+    }
+    get correct(){
+        return this.#correct
+    }
+
 }
