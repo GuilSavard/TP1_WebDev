@@ -12,5 +12,8 @@ class Joueur {
      */
     comparerA(autre) {
     }
+    get #nom(){
+        return this.#nom
+    }
 }
 //daaca
