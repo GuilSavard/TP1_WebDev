@@ -4,6 +4,12 @@
  */
 class Joueur {
 
+    #nom
+
+    constructor(nom) {
+        this.#nom = nom
+    }
+
 
     /**
      * Compare le score avec un autre joueur.
