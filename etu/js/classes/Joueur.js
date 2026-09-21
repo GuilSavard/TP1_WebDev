@@ -2,7 +2,7 @@
  * Classe Joueur
  * Représente un joueur avec son nom et son score.
  */
-class Joueur {
+export class Joueur {
 
     #nom
 
@@ -18,8 +18,13 @@ class Joueur {
      */
     comparerA(autre) {
     }
-    get #nom(){
+    get nom(){
         return this.#nom
+    }
+
+    set nom(nom){
+
+        this.#nom = nom
     }
 }
 //daaca
