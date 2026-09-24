@@ -1,6 +1,8 @@
 import {questionsData} from './donnees.js';
 import {Quiz} from './classes/Quiz.js';
 import {VueQuiz} from './classes/VueQuiz.js';
+import {Question} from "./classes/Question";
+import {Joueur} from "./classes/Joueur";
 
 // --------------------------------------------------------------
 // 1. Instanciation des objets Question

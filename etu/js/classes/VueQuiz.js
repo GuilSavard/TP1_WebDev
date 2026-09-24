@@ -3,7 +3,7 @@
 // =============================================================================
 
 import {
-    TEMPLATE_BIENVENUE
+    TEMPLATE_BIENVENUE, TEMPLATE_QUIZ, TEMPLATE_RESULTAT
 } from "../VuesDynamiques.js";
 import {handleDemarrer, handleQuestionSuivante, handleRecommancer} from "../evenements.js";
 
@@ -78,6 +78,7 @@ export class VueQuiz {
 
     // ---------- Écran de quiz ----------
     #afficheQuiz() {
+        this.#conteneur.innerHTML = TEMPLATE_QUIZ;
 
 
         document.getElementById('nextBtn').addEventListener('click',
@@ -89,6 +90,7 @@ export class VueQuiz {
 
     // ---------- Écran de résultat ----------
     #afficheResultat() {
+        this.#conteneur.innerHTML = TEMPLATE_RESULTAT;
 
 
     }
