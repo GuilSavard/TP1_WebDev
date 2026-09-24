@@ -35,6 +35,10 @@ export class VueQuiz {
         return [...this.#nomsJoueurs];
     }
 
+    set nomsJoueurs(nomJoueurs){
+        this.#nomsJoueurs = nomJoueurs
+    }
+
     get quiz() {
         return this.#quiz;
     }

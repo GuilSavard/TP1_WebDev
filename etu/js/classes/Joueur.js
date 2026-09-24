@@ -27,4 +27,3 @@ export class Joueur {
         this.#nom = nom
     }
 }
-//daaca
