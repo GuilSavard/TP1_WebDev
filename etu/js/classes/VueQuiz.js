@@ -79,11 +79,22 @@ export class VueQuiz {
 
     // ---------- Écran de quiz ----------
     #afficheQuiz() {
+
+        let q;
+        let estRepondu;
+        let reponseChoisie;
+
         this.#conteneur.innerHTML = TEMPLATE_QUIZ;
-        this.#conteneur.innerHTML += TEMPLATE_BADGE_JOUEUR;
+        this.#conteneur.innerHTML += TEMPLATE_BADGE_JOUEUR(this.quiz.joueurs ,this.quiz.joueurActuel,this.quiz.score,this.quiz.indices);
 
+        this.#conteneur.innerHTML += TEMPLATE_OPTION("classes", 3,"A", 3);
 
-
+        let htmlOptions = '';
+        for (let i = 0; i < q.options.length; i++) {
+            const option = q.options[i];
+            const classes = this.#determinerClasseAppropriee(i, q, estRepondu, reponseChoisie);
+            htmlOptions += '' + TEMPLATE_OPTION(classes, i, q.lettreA(i), option);
+        }
 
         document.getElementById('nextBtn').addEventListener('click',
             (ev) => {
