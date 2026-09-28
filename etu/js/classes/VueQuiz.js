@@ -3,7 +3,8 @@
 // =============================================================================
 
 import {
-    TEMPLATE_BIENVENUE, TEMPLATE_QUIZ, TEMPLATE_RESULTAT
+    TEMPLATE_BADGE_JOUEUR,
+    TEMPLATE_BIENVENUE, TEMPLATE_OPTION, TEMPLATE_QUIZ, TEMPLATE_RESULTAT
 } from "../VuesDynamiques.js";
 import {handleDemarrer, handleQuestionSuivante, handleRecommancer} from "../evenements.js";
 
@@ -79,6 +80,9 @@ export class VueQuiz {
     // ---------- Écran de quiz ----------
     #afficheQuiz() {
         this.#conteneur.innerHTML = TEMPLATE_QUIZ;
+        this.#conteneur.innerHTML += TEMPLATE_BADGE_JOUEUR;
+
+
 
 
         document.getElementById('nextBtn').addEventListener('click',
