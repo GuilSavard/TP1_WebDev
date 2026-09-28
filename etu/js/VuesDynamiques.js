@@ -19,6 +19,7 @@ export const TEMPLATE_BIENVENUE = `
 `;
 
 export const TEMPLATE_OPTION = (classes, index, lettre, option) => `
+
     <div class="${classes}" data-index="${index}">
         <span class="letter">${lettre}</span>
         ${option}
@@ -76,9 +77,8 @@ export const TEMPLATE_QUIZ =   `
     <h1>🧠 Quiz</h1>
     <p class="subtitle">Tour par tour</p>
     
-
-    <button class="btn btn-next nav-buttons" id="nextBtn">Suivant</button>
-
+    <p class="question-text">La question</p>
+    
 `;
 
 
