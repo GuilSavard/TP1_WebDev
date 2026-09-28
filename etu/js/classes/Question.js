@@ -16,7 +16,6 @@ export class Question {
     #options = [""]
     #correct;
     #enonce;
-    #options;
     #indexCorrect;
 
     constructor({question, options, correct}) {
