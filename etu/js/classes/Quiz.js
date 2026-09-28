@@ -137,6 +137,17 @@ export class Quiz {
      */
     suivant() {
 
+       if( this.#indexQuestionActuelle < this.#questions.length){
+           this.#indexQuestionActuelle += 1;
+       }
+       else {
+           this.#estTermine = true;
+       }
+
+       this.joueurActuel = this.autreJoueur
+
+
+
     }
 
     /**
