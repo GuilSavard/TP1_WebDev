@@ -15,6 +15,9 @@ export class Question {
     #question = "";
     #options = [""]
     #correct;
+    #enonce;
+    #options;
+    #indexCorrect;
 
     constructor({question, options, correct}) {
         this.#question = question;
@@ -28,28 +31,29 @@ export class Question {
      * @returns {string}
      */
     lettreA(index) {
-        return "A";
+        let choix = "";
+        choix = this.#options[index];
+
+        return choix;
     }
 
-    lettreB(index) {
-        return "B";
+    estCorrect(index) {
+        let cor = false;
+        if(index === this.#indexCorrect){
+            cor = true;
+        }
+        return cor;
     }
 
-    lettreC(index) {
-        return "C";
-    }
-
-    lettreD(index) {
-        return "D";
-    }
-
-    get question(){
+    get question() {
         return this.#question
     }
-    get options(){
+
+    get options() {
         return this.#options
     }
-    get correct(){
+
+    get correct() {
         return this.#correct
     }
 
