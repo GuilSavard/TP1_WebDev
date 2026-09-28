@@ -85,7 +85,7 @@ export class VueQuiz {
         let reponseChoisie = this.quiz.reponseChoisie;
 
         this.#conteneur.innerHTML = TEMPLATE_QUIZ;
-        this.#conteneur.innerHTML += TEMPLATE_BADGE_JOUEUR(this.quiz.active ,this.quiz.joueurActuel,this.quiz.score,this.quiz.indices);
+        this.#conteneur.innerHTML += TEMPLATE_BADGE_JOUEUR(true ,"moi",0,this.quiz.indices);
 
 
 
