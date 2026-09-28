@@ -25,20 +25,6 @@ export const TEMPLATE_OPTION = (classes, index, lettre, option) => `
         ${option}
     </div>
     
-      <div class="${classes}" data-index="${index}">
-        <span class="letter">${lettre}</span>
-        ${option}
-    </div>
-    
-      <div class="${classes}" data-index="${index}">
-        <span class="letter">${lettre}</span>
-        ${option}
-    </div>
-    
-      <div class="${classes}" data-index="${index}">
-        <span class="letter">${lettre}</span>
-        ${option}
-    </div>
 `;
 
 // Compléter TEMPLATE_BADGE_JOUEUR

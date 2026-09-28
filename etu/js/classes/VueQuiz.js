@@ -80,14 +80,15 @@ export class VueQuiz {
     // ---------- Écran de quiz ----------
     #afficheQuiz() {
 
-        let q;
-        let estRepondu;
-        let reponseChoisie;
+        let q = this.quiz.question;
+        let estRepondu =  this.quiz.estRepondu;
+        let reponseChoisie = this.quiz.reponseChoisie;
 
         this.#conteneur.innerHTML = TEMPLATE_QUIZ;
-        this.#conteneur.innerHTML += TEMPLATE_BADGE_JOUEUR(this.quiz.joueurs ,this.quiz.joueurActuel,this.quiz.score,this.quiz.indices);
+        this.#conteneur.innerHTML += TEMPLATE_BADGE_JOUEUR(this.quiz.active ,this.quiz.joueurActuel,this.quiz.score,this.quiz.indices);
 
-        this.#conteneur.innerHTML += TEMPLATE_OPTION("classes", 3,"A", 3);
+
+
 
         let htmlOptions = '';
         for (let i = 0; i < q.options.length; i++) {
@@ -96,12 +97,20 @@ export class VueQuiz {
             htmlOptions += '' + TEMPLATE_OPTION(classes, i, q.lettreA(i), option);
         }
 
+      this.#conteneur.innerHTML += htmlOptions
+
+
+
+
         document.getElementById('nextBtn').addEventListener('click',
             (ev) => {
                 handleQuestionSuivante(ev, quiz)
             }
         );
     }
+
+
+
 
     // ---------- Écran de résultat ----------
     #afficheResultat() {
