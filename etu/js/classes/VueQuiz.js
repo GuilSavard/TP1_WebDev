@@ -87,14 +87,16 @@ export class VueQuiz {
         let reponseChoisie = this.quiz.reponseChoisie;
 
         this.#conteneur.innerHTML = TEMPLATE_QUIZ;
-        this.#conteneur.innerHTML += TEMPLATE_BADGE_JOUEUR(true ,"moi",0);
+        this.#conteneur.innerHTML += TEMPLATE_BADGE_JOUEUR(false ,"moi",0);
 
         let htmlBadges = '';
         for (let i = 0; i < b.length; i++) {
-            
+           let play = true
+            if (play){
 
+            }
 
-            htmlOptions += '' + TEMPLATE_BADGE_JOUEUR();
+            htmlBadges += '' + TEMPLATE_BADGE_JOUEUR();
         }
 
 
