@@ -7,6 +7,7 @@ import {
     TEMPLATE_BIENVENUE, TEMPLATE_OPTION, TEMPLATE_QUIZ, TEMPLATE_RESULTAT
 } from "../VuesDynamiques.js";
 import {handleDemarrer, handleQuestionSuivante, handleRecommancer} from "../evenements.js";
+import {Joueur} from "./Joueur.js";
 
 /**
  * Classe VueQuiz
@@ -80,14 +81,21 @@ export class VueQuiz {
     // ---------- Écran de quiz ----------
     #afficheQuiz() {
 
+        let b = this.#nomsJoueurs
         let q = this.quiz.question;
         let estRepondu =  this.quiz.estRepondu;
         let reponseChoisie = this.quiz.reponseChoisie;
 
         this.#conteneur.innerHTML = TEMPLATE_QUIZ;
-        this.#conteneur.innerHTML += TEMPLATE_BADGE_JOUEUR(true ,"moi",0,this.quiz.indices);
+        this.#conteneur.innerHTML += TEMPLATE_BADGE_JOUEUR(true ,"moi",0);
+
+        let htmlBadges = '';
+        for (let i = 0; i < b.length; i++) {
+            
 
 
+            htmlOptions += '' + TEMPLATE_BADGE_JOUEUR();
+        }
 
 
         let htmlOptions = '';

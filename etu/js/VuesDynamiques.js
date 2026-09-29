@@ -32,25 +32,16 @@ export const TEMPLATE_OPTION = (classes, index, lettre, option) => `
 //TEST
 export const TEMPLATE_BADGE_JOUEUR = (active, name, score, indicator) => `
    
-    <div class="player-input-group">
-    <div class="player-badge">
+
+    <div id="badge" class="player-badge">
        
        <span class="active">${active}</span>
        <span class="name">${name}</span>
        <span class="score">${score}</span>
-       <span class="indicator">${indicator}</span>
+
        
-    </div>
+    </divid>
     
-     <div class="player-badge">
-       
-       <span class="active">${active}</span>
-       <span class="name">${name}</span>
-       <span class="score">${score}</span>
-       <span class="indicator">${indicator}</span>
-       
-    </div>
-    </div>
     
 `;
 
