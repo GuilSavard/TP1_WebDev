@@ -7,7 +7,7 @@ import {
     TEMPLATE_BIENVENUE, TEMPLATE_OPTION, TEMPLATE_QUIZ, TEMPLATE_RESULTAT
 } from "../VuesDynamiques.js";
 import {handleDemarrer, handleQuestionSuivante, handleRecommancer} from "../evenements.js";
-import {Joueur} from "./Joueur.js";
+import {Quiz} from "./Quiz.js";
 
 /**
  * Classe VueQuiz
@@ -37,7 +37,7 @@ export class VueQuiz {
         return [...this.#nomsJoueurs];
     }
 
-    set nomsJoueurs(nomJoueurs){
+    set nomsJoueurs(nomJoueurs) {
         this.#nomsJoueurs = nomJoueurs
     }
 
@@ -82,22 +82,19 @@ export class VueQuiz {
     #afficheQuiz() {
 
         let b = this.#nomsJoueurs
-        let q = this.quiz.question;
-        let estRepondu =  this.quiz.estRepondu;
+        let q = this.#quiz.question;
+        let estRepondu = this.quiz.estRepondu;
         let reponseChoisie = this.quiz.reponseChoisie;
 
         this.#conteneur.innerHTML = TEMPLATE_QUIZ;
-        this.#conteneur.innerHTML += TEMPLATE_BADGE_JOUEUR(false ,"moi",0);
+
 
         let htmlBadges = '';
         for (let i = 0; i < b.length; i++) {
-           let play = true
-            if (play){
 
-            }
-
-            htmlBadges += '' + TEMPLATE_BADGE_JOUEUR();
+            this.#conteneur.innerHTML +='' + TEMPLATE_BADGE_JOUEUR(this.#quiz.joueurActuel === this.#quiz.joueurs[i], this.#quiz.joueurs[i].nom, this.#quiz.joueurs[i].score);
         }
+        // this.#conteneur.innerHTML += htmlBadges;
 
 
         let htmlOptions = '';
@@ -107,9 +104,7 @@ export class VueQuiz {
             htmlOptions += '' + TEMPLATE_OPTION(classes, i, q.lettreA(i), option);
         }
 
-      this.#conteneur.innerHTML += htmlOptions
-
-
+        this.#conteneur.innerHTML += htmlOptions
 
 
         document.getElementById('nextBtn').addEventListener('click',
@@ -118,8 +113,6 @@ export class VueQuiz {
             }
         );
     }
-
-
 
 
     // ---------- Écran de résultat ----------
