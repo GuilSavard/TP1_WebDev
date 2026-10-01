@@ -37,7 +37,7 @@ export class VueQuiz {
         return [...this.#nomsJoueurs];
     }
 
-    set nomsJoueurs(nomJoueurs) {
+    set nomsJoueurs(nomJoueurs){
         this.#nomsJoueurs = nomJoueurs
     }
 
@@ -87,6 +87,7 @@ export class VueQuiz {
         let reponseChoisie = this.quiz.reponseChoisie;
 
         this.#conteneur.innerHTML = TEMPLATE_QUIZ;
+        this.#conteneur.innerHTML += TEMPLATE_BADGE_JOUEUR(true ,"moi",0,this.quiz.indices);
 
 
         let htmlBadges = '';
@@ -107,7 +108,9 @@ export class VueQuiz {
             htmlOptions += '' + TEMPLATE_OPTION(classes, i, q.lettreA(i), option);
         }
 
-        this.#conteneur.innerHTML += htmlOptions
+      this.#conteneur.innerHTML += htmlOptions
+
+
 
 
         document.getElementById('nextBtn').addEventListener('click',
@@ -116,6 +119,8 @@ export class VueQuiz {
             }
         );
     }
+
+
 
 
     // ---------- Écran de résultat ----------
