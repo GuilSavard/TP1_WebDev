@@ -86,18 +86,17 @@ export class VueQuiz {
         let estRepondu = this.quiz.estRepondu;
         let reponseChoisie = this.quiz.reponseChoisie;
 
-        this.#conteneur.innerHTML = TEMPLATE_QUIZ;
+
 
 
         let htmlBadges = '';
-        htmlBadges += '<div class="player-input-group">';
+
 
         for (let i = 0; i < b.length; i++) {
 
-            this.#conteneur.innerHTML +='' + TEMPLATE_BADGE_JOUEUR(this.#quiz.joueurActuel === this.#quiz.joueurs[i], this.#quiz.joueurs[i].nom, this.#quiz.joueurs[i].score);
+            htmlBadges +='' + TEMPLATE_BADGE_JOUEUR(this.#quiz.joueurActuel === this.#quiz.joueurs[i], this.#quiz.joueurs[i].nom, this.#quiz.joueurs[i].score);
         }
 
-        // this.#conteneur.innerHTML += htmlBadges;
 
 
         let htmlOptions = '';
@@ -107,16 +106,18 @@ export class VueQuiz {
             htmlOptions += '' + TEMPLATE_OPTION(classes, i, q.lettreA(i), option);
         }
 
-      this.#conteneur.innerHTML += htmlOptions
 
 
+        this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadges,this.quiz.questionActuelle,htmlOptions);
 
 
         document.getElementById('nextBtn').addEventListener('click',
             (ev) => {
                 handleQuestionSuivante(ev, quiz)
             }
+
         );
+
     }
 
 
