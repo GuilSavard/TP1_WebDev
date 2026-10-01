@@ -1,3 +1,5 @@
+import {Question} from "./classes/Question";
+
 const conteneur = document.getElementById('app');
 
 export function handleDemarrer(ev, vue) {
@@ -25,8 +27,10 @@ export function handleChoixDeReponse(ev, quiz) {
 // A COMPLÉTER
     const boutonOption = ev.target;
     const index = parseInt(boutonOption.dataset.index, 10);
-
-
+    if (quiz.questionActuelle.estCorrect(index)) {
+        quiz.repondre(index);
+    }
+return index
 }
 
 export function handleQuestionSuivante(ev, quiz) {

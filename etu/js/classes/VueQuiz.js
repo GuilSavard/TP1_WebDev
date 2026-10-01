@@ -112,9 +112,12 @@ export class VueQuiz {
 
         do {
 
-            document.getElementById('id-option-grid').addEventListener('click', (ev) =>{
-                handleChoixDeReponse(ev, this.#quiz)
-            })
+        document.getElementById('id-option-grid').addEventListener('click', (ev) =>{
+            let indexchanger
+
+           indexchanger = handleChoixDeReponse(ev, this.#quiz)
+            //mettre resultat dans html otions
+        })
 
 
             document.getElementById('nextBtn').addEventListener('click',
