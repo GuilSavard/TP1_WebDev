@@ -87,17 +87,16 @@ export class VueQuiz {
         let reponseChoisie = this.quiz.reponseChoisie;
 
         this.#conteneur.innerHTML = TEMPLATE_QUIZ;
-        this.#conteneur.innerHTML += TEMPLATE_BADGE_JOUEUR(true ,"moi",0,this.quiz.indices);
 
 
         let htmlBadges = '';
         htmlBadges += '<div class="player-input-group">';
-        this.#conteneur.innerHTML += '<div class="player-input-group">';
+
         for (let i = 0; i < b.length; i++) {
 
             this.#conteneur.innerHTML +='' + TEMPLATE_BADGE_JOUEUR(this.#quiz.joueurActuel === this.#quiz.joueurs[i], this.#quiz.joueurs[i].nom, this.#quiz.joueurs[i].score);
         }
-        this.#conteneur.innerHTML += '</div>';
+
         // this.#conteneur.innerHTML += htmlBadges;
 
 

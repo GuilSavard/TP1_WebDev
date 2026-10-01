@@ -31,9 +31,9 @@ export const TEMPLATE_OPTION = (classes, index, lettre, option) => `
 
 //TEST
 export const TEMPLATE_BADGE_JOUEUR = (active, name, score) => {
-    let s = "";
+    let s = ""
 
-    if(active){`
+    if(active){s = `
    
    
     
@@ -46,7 +46,7 @@ export const TEMPLATE_BADGE_JOUEUR = (active, name, score) => {
 
 `}
 else {
-        `
+       s = `
    
    
     
@@ -59,7 +59,7 @@ else {
 
 `
     }
- return s;
+ return s
 };
 
 // Compléter TEMPLATE_QUIZ
