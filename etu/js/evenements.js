@@ -23,9 +23,14 @@ export function handleDemarrer(ev, vue) {
 
 export function handleChoixDeReponse(ev, quiz) {
 // A COMPLÉTER
+    const boutonOption = ev.target;
+    const index = parseInt(boutonOption.dataset.index, 10);
+
+
 }
 
 export function handleQuestionSuivante(ev, quiz) {
+    //todo lorsque reponse selectioner boton a on
     const boutonSuivant = ev.target;
     if (!boutonSuivant.disabled) {
         quiz.suivant();

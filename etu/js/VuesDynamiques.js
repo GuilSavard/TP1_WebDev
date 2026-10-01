@@ -41,6 +41,7 @@ export const TEMPLATE_BADGE_JOUEUR = (active, name, score) => {
        
        <p class="name">${name}</p>
        <p class="score">${score}</p>
+       <p class="indicator">🎯 À vous</p>
        
     </div>
 
@@ -79,7 +80,7 @@ export const TEMPLATE_QUIZ = (badge, question, option) =>  `
     ${question}
     </div>
     
-    <div class="options-grid">
+    <div class="options-grid" id="id-option-grid">
     ${option}
     </div>
     

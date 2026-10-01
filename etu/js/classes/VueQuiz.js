@@ -6,7 +6,7 @@ import {
     TEMPLATE_BADGE_JOUEUR,
     TEMPLATE_BIENVENUE, TEMPLATE_OPTION, TEMPLATE_QUIZ, TEMPLATE_RESULTAT
 } from "../VuesDynamiques.js";
-import {handleDemarrer, handleQuestionSuivante, handleRecommancer} from "../evenements.js";
+import {handleChoixDeReponse, handleDemarrer, handleQuestionSuivante, handleRecommancer} from "../evenements.js";
 import {Quiz} from "./Quiz.js";
 
 /**
@@ -111,9 +111,14 @@ export class VueQuiz {
         this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadges,this.quiz.questionActuelle.question,htmlOptions);
 
 
+        document.getElementById('id-option-grid').addEventListener('click', (ev) =>{
+            handleChoixDeReponse(ev, this.#quiz)
+        })
+
+
         document.getElementById('nextBtn').addEventListener('click',
             (ev) => {
-                handleQuestionSuivante(ev, quiz)
+                handleQuestionSuivante(ev, this.#quiz)
             }
 
         );
@@ -125,6 +130,7 @@ export class VueQuiz {
 
     // ---------- Écran de résultat ----------
     #afficheResultat() {
+        //todo
         this.#conteneur.innerHTML = TEMPLATE_RESULTAT;
 
 

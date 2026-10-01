@@ -51,7 +51,16 @@ export class Quiz {
         return this.#joueurs[this.#indexJoueurActuel];
     }
 
+
+
     get autreJoueur() {
+        let autre
+        if (this.#indexJoueurActuel === 0) {
+            autre = this.#indexJoueurActuel + 1
+        } else {
+            autre = this.#indexJoueurActuel - 1
+        }
+
         return this.#joueurs[1 - this.#indexJoueurActuel];
     }
 
@@ -100,8 +109,8 @@ export class Quiz {
         let retour = null;
         const [p1, p2] = this.#joueurs;
         const cmp = p1.comparerA(p2);
-        if (cmp > DIFFERENCE_DE_SCORE_POUR_GAGNER-1) retour = p1;
-        if (cmp < DIFFERENCE_DE_SCORE_POUR_GAGNER-1) retour = p2;
+        if (cmp > DIFFERENCE_DE_SCORE_POUR_GAGNER - 1) retour = p1;
+        if (cmp < DIFFERENCE_DE_SCORE_POUR_GAGNER - 1) retour = p2;
         return retour;
     }
 
@@ -140,15 +149,13 @@ export class Quiz {
      */
     suivant() {
 
-       if( this.#indexQuestionActuelle < this.#questions.length){
-           this.#indexQuestionActuelle += 1;
-       }
-       else {
-           this.#estTermine = true;
-       }
+        if (this.#indexQuestionActuelle < this.#questions.length) {
+            this.#indexQuestionActuelle += 1;
+        } else {
+            this.#estTermine = true;
+        }
 
-       this.joueurActuel = this.autreJoueur
-
+        this.#indexJoueurActuel = this.autreJoueur
 
 
     }
