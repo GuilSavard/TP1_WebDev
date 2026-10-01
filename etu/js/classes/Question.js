@@ -31,7 +31,24 @@ export class Question {
      */
     lettreA(index) {
         let choix = "";
-        choix = this.#options[index];
+        switch (index){
+            case (0):
+                choix = "A."
+                break
+            case (1):
+                choix = "B."
+                break
+            case (2):
+                choix = "C."
+                break
+            case (3):
+                choix = "D."
+                break
+
+
+
+        }
+
 
         return choix;
     }

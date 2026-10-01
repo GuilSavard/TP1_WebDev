@@ -108,7 +108,7 @@ export class VueQuiz {
 
 
 
-        this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadges,this.quiz.questionActuelle,htmlOptions);
+        this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadges,this.quiz.questionActuelle.question,htmlOptions);
 
 
         document.getElementById('nextBtn').addEventListener('click',

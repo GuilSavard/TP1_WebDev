@@ -96,11 +96,12 @@ export class Quiz {
      * @returns {Joueur|null}
      */
     get gagnant() {
+        //todo
         let retour = null;
         const [p1, p2] = this.#joueurs;
         const cmp = p1.comparerA(p2);
-        if (cmp > 0) retour = p1;
-        if (cmp < 0) retour = p2;
+        if (cmp > DIFFERENCE_DE_SCORE_POUR_GAGNER-1) retour = p1;
+        if (cmp < DIFFERENCE_DE_SCORE_POUR_GAGNER-1) retour = p2;
         return retour;
     }
 
@@ -128,6 +129,8 @@ export class Quiz {
      * @param {number} indexSelectionne
      */
     repondre(indexSelectionne) {
+
+
 //todo
     }
 
