@@ -30,18 +30,37 @@ export const TEMPLATE_OPTION = (classes, index, lettre, option) => `
 // Compléter TEMPLATE_BADGE_JOUEUR
 
 //TEST
-export const TEMPLATE_BADGE_JOUEUR = (active, name, score) => `
+export const TEMPLATE_BADGE_JOUEUR = (active, name, score) => {
+    let s = "";
+
+    if(active){`
+   
+   
+    
+    <div class="player-badge active">
+       
+       <p class="name">${name}</p>
+       <p class="score">${score}</p>
+       
+    </div>
+
+`}
+else {
+        `
+   
    
     
     <div class="player-badge">
        
        <p class="name">${name}</p>
        <p class="score">${score}</p>
-       <p class="indicator">${active}</p>
        
     </div>
 
-`;
+`
+    }
+ return s;
+};
 
 // Compléter TEMPLATE_QUIZ
 
