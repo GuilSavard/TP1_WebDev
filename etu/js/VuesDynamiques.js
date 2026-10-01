@@ -64,7 +64,7 @@ else {
 
 // Compléter TEMPLATE_QUIZ
 
-//TEST
+
 // player-status,subtitle,question-text
 export const TEMPLATE_QUIZ = (badge, question, option) =>  `
    
@@ -83,8 +83,8 @@ export const TEMPLATE_QUIZ = (badge, question, option) =>  `
     ${option}
     </div>
     
-    <div class="btn btn-next" id="nextBtn">
-    
+    <div>
+    <button class="btn btn-next" id="nextBtn">Suivant</button>
     </div>
 </div>
     
