@@ -37,7 +37,7 @@ export class VueQuiz {
         return [...this.#nomsJoueurs];
     }
 
-    set nomsJoueurs(nomJoueurs) {
+    set nomsJoueurs(nomJoueurs){
         this.#nomsJoueurs = nomJoueurs
     }
 
@@ -81,20 +81,14 @@ export class VueQuiz {
     // ---------- Écran de quiz ----------
     #afficheQuiz() {
 
-        let b = this.#nomsJoueurs
-        let q = this.#quiz.question;
-        let estRepondu = this.quiz.estRepondu;
+        let q = this.quiz.question;
+        let estRepondu =  this.quiz.estRepondu;
         let reponseChoisie = this.quiz.reponseChoisie;
 
         this.#conteneur.innerHTML = TEMPLATE_QUIZ;
+        this.#conteneur.innerHTML += TEMPLATE_BADGE_JOUEUR(true ,"moi",0,this.quiz.indices);
 
 
-        let htmlBadges = '';
-        for (let i = 0; i < b.length; i++) {
-
-            this.#conteneur.innerHTML +='' + TEMPLATE_BADGE_JOUEUR(this.#quiz.joueurActuel === this.#quiz.joueurs[i], this.#quiz.joueurs[i].nom, this.#quiz.joueurs[i].score);
-        }
-        // this.#conteneur.innerHTML += htmlBadges;
 
 
         let htmlOptions = '';
@@ -104,7 +98,9 @@ export class VueQuiz {
             htmlOptions += '' + TEMPLATE_OPTION(classes, i, q.lettreA(i), option);
         }
 
-        this.#conteneur.innerHTML += htmlOptions
+      this.#conteneur.innerHTML += htmlOptions
+
+
 
 
         document.getElementById('nextBtn').addEventListener('click',
@@ -113,6 +109,8 @@ export class VueQuiz {
             }
         );
     }
+
+
 
 
     // ---------- Écran de résultat ----------

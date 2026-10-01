@@ -30,48 +30,33 @@ export const TEMPLATE_OPTION = (classes, index, lettre, option) => `
 // Compléter TEMPLATE_BADGE_JOUEUR
 
 //TEST
-export const TEMPLATE_BADGE_JOUEUR = (active, name, score) =>
-{
-    let s = ""
-
-    if(active){
-
-     s =   `
-
-    <div id="badge" class="player-badge active">
+export const TEMPLATE_BADGE_JOUEUR = (active, name, score) => `
+   
+    
+    <div class="player-badge">
        
        <p class="name">${name}</p>
        <p class="score">${score}</p>
-
+       <p class="indicator">${active}</p>
        
-    </divid>
-`}else {
+    </div>
 
-        s =   `
-
-    <div id="badge" class="player-badge">
-       
-       <p class="name">${name}</p>
-       <p class="score">${score}</p>
-
-       
-    </divid>
-`
-    }
-
-    return s
-};
+`;
 
 // Compléter TEMPLATE_QUIZ
 
 //TEST
 // player-status,subtitle,question-text
-export const TEMPLATE_QUIZ =   `
+export const TEMPLATE_QUIZ = (badge, question, option) =>  `
    
     <h1>🧠 Quiz</h1>
     <p class="subtitle">Tour par tour</p>
+    <div class="players-status">
+     {badge}
+</div>
+   
     
-    <p class="question-text">La question</p>
+    
     
 `;
 
