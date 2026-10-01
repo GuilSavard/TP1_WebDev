@@ -52,7 +52,6 @@ export class Quiz {
     }
 
 
-
     get autreJoueur() {
         let autre
         if (this.#indexJoueurActuel === 0) {
@@ -138,8 +137,8 @@ export class Quiz {
      * @param {number} indexSelectionne
      */
     repondre(indexSelectionne) {
-
-
+//donne un point et probs plus
+        this.joueurActuel.ajouterPoint()
 //todo
     }
 
@@ -156,7 +155,6 @@ export class Quiz {
         }
 
         this.#indexJoueurActuel = this.autreJoueur
-
 
     }
 
