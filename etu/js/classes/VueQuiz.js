@@ -110,18 +110,20 @@ export class VueQuiz {
 
         this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadges,this.quiz.questionActuelle.question,htmlOptions);
 
+        do {
 
-        document.getElementById('id-option-grid').addEventListener('click', (ev) =>{
-            handleChoixDeReponse(ev, this.#quiz)
-        })
+            document.getElementById('id-option-grid').addEventListener('click', (ev) =>{
+                handleChoixDeReponse(ev, this.#quiz)
+            })
 
 
-        document.getElementById('nextBtn').addEventListener('click',
-            (ev) => {
-                handleQuestionSuivante(ev, this.#quiz)
-            }
+            document.getElementById('nextBtn').addEventListener('click',
+                (ev) => {
+                    handleQuestionSuivante(ev, this.#quiz)
+                }
 
-        );
+            );
+        }while(this.#quiz.gagnant === null)
 
     }
 
