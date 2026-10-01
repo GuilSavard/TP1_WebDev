@@ -128,7 +128,7 @@ export class Quiz {
      * @param {number} indexSelectionne
      */
     repondre(indexSelectionne) {
-
+//todo
     }
 
     /**

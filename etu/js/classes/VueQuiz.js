@@ -82,7 +82,7 @@ export class VueQuiz {
     #afficheQuiz() {
 
         let b = this.#nomsJoueurs
-        let q = this.#quiz.question;
+        let q = this.#quiz.questionActuelle;
         let estRepondu = this.quiz.estRepondu;
         let reponseChoisie = this.quiz.reponseChoisie;
 
@@ -90,10 +90,13 @@ export class VueQuiz {
 
 
         let htmlBadges = '';
+        htmlBadges += '<div class="player-input-group">';
+        this.#conteneur.innerHTML += '<div class="player-input-group">';
         for (let i = 0; i < b.length; i++) {
 
             this.#conteneur.innerHTML +='' + TEMPLATE_BADGE_JOUEUR(this.#quiz.joueurActuel === this.#quiz.joueurs[i], this.#quiz.joueurs[i].nom, this.#quiz.joueurs[i].score);
         }
+        this.#conteneur.innerHTML += '</div>';
         // this.#conteneur.innerHTML += htmlBadges;
 
 
