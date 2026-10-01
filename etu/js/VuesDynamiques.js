@@ -70,9 +70,24 @@ export const TEMPLATE_QUIZ = (badge, question, option) =>  `
    
     <h1>🧠 Quiz</h1>
     <p class="subtitle">Tour par tour</p>
+<div>
     <div class="players-status">
      ${badge}
+    </div>
+    
+    <div class="question-text">
+    ${question}
+    </div>
+    
+    <div class="options-grid">
+    ${option}
+    </div>
+    
+    <div class="btn btn-next" id="nextBtn">
+    
+    </div>
 </div>
+    
    
     
     
