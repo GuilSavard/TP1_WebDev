@@ -84,7 +84,7 @@ export const TEMPLATE_QUIZ = (badge, question, option) =>  `
     </div>
     
     <div>
-    <button class="btn btn-next" id="nextBtn">Suivant</button>
+    <button class="btn btn-next" id="nextBtn">Suivant →</button>
     </div>
 </div>
     

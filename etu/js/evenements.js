@@ -22,7 +22,9 @@ export function handleDemarrer(ev, vue) {
 }
 
 export function handleChoixDeReponse(ev, quiz) {
-// A COMPLÉTER
+    // Voici comment rÃ©cupÃ©rer l'index de l'option cliquÃ©e
+    //const boutonOption = ev.target;
+    //const index = parseInt(boutonOption.dataset.index, 10);
 }
 
 export function handleQuestionSuivante(ev, quiz) {
