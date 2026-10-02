@@ -21,7 +21,8 @@ export class Question {
     constructor({question, options, correct}) {
         this.#question = question;
         this.#options = options;
-        this.#correct = correct;
+        this.#indexCorrect = correct;
+        this.#correct = correct
     }
 
     /**
@@ -69,7 +70,7 @@ export class Question {
         return this.#options
     }
 
-    get correct() {
+    get indexCorrect() {
         return this.#correct
     }
 

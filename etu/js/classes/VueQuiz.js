@@ -37,7 +37,7 @@ export class VueQuiz {
         return [...this.#nomsJoueurs];
     }
 
-    set nomsJoueurs(nomJoueurs){
+    set nomsJoueurs(nomJoueurs) {
         this.#nomsJoueurs = nomJoueurs
     }
 
@@ -87,16 +87,12 @@ export class VueQuiz {
         let reponseChoisie = this.quiz.reponseChoisie;
 
 
-
-
         let htmlBadges = '';
 
 
         for (let i = 0; i < b.length; i++) {
-
-            htmlBadges +='' + TEMPLATE_BADGE_JOUEUR(this.#quiz.joueurActuel === this.#quiz.joueurs[i], this.#quiz.joueurs[i].nom, this.#quiz.joueurs[i].score);
+            htmlBadges += '' + TEMPLATE_BADGE_JOUEUR(this.#quiz.joueurActuel === this.#quiz.joueurs[i], this.#quiz.joueurs[i].nom, this.#quiz.joueurs[i].score);
         }
-
 
 
         let htmlOptions = '';
@@ -107,15 +103,26 @@ export class VueQuiz {
         }
 
 
+        this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadges, this.quiz.questionActuelle.question, htmlOptions);
+let htmlBadgesRepondu = "";
+let htmlOptionsRepondu = "";
+        document.getElementById('id-option-grid').addEventListener('click', (ev) => {
 
-        this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadges,this.quiz.questionActuelle.question,htmlOptions);
 
+            reponseChoisie = handleChoixDeReponse(ev, this.#quiz)
+            estRepondu = !estRepondu
+            for (let i = 0; i < q.options.length; i++) {
+                const option = q.options[i];
+                const classes = this.#determinerClasseAppropriee(i, q, estRepondu, reponseChoisie);
+                htmlOptionsRepondu += '' + TEMPLATE_OPTION(classes, i, q.lettreA(i), option);
+            }
+            for (let i = 0; i < b.length; i++) {
+                htmlBadgesRepondu += '' + TEMPLATE_BADGE_JOUEUR(this.#quiz.joueurActuel === this.#quiz.joueurs[i], this.#quiz.joueurs[i].nom, this.#quiz.joueurs[i].score);
+            }
 
-        document.getElementById('id-option-grid').addEventListener('click', (ev) =>{
-            let indexchanger
-
-           indexchanger = handleChoixDeReponse(ev, this.#quiz)
+            this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadgesRepondu, this.quiz.questionActuelle.question, htmlOptionsRepondu);
             //mettre resultat dans html otions
+
         })
 
 
@@ -123,12 +130,9 @@ export class VueQuiz {
             (ev) => {
                 handleQuestionSuivante(ev, this.#quiz)
             }
-
         );
 
     }
-
-
 
 
     // ---------- Écran de résultat ----------

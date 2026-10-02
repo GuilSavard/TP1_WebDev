@@ -1,4 +1,3 @@
-import {Question} from "./classes/Question";
 
 const conteneur = document.getElementById('app');
 
