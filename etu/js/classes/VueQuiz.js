@@ -8,6 +8,7 @@ import {
 } from "../VuesDynamiques.js";
 import {handleChoixDeReponse, handleDemarrer, handleQuestionSuivante, handleRecommancer} from "../evenements.js";
 import {Quiz} from "./Quiz.js";
+import {Joueur} from "./Joueur";
 
 /**
  * Classe VueQuiz
@@ -104,8 +105,8 @@ export class VueQuiz {
 
 
         this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadges, this.quiz.questionActuelle.question, htmlOptions);
-let htmlBadgesRepondu = "";
-let htmlOptionsRepondu = "";
+        let htmlBadgesRepondu = "";
+        let htmlOptionsRepondu = "";
         document.getElementById('id-option-grid').addEventListener('click', (ev) => {
 
 
@@ -138,7 +139,11 @@ let htmlOptionsRepondu = "";
     // ---------- Écran de résultat ----------
     #afficheResultat() {
         //todo
-        this.#conteneur.innerHTML = TEMPLATE_RESULTAT;
+        let gagnant = Joueur
+        gagnant = this.#quiz.gagnant
+        let htmlGagnant
+        htmlGagnant += '' + TEMPLATE_BADGE_JOUEUR(false, gagnant.nom, gagnant.score);
+        this.#conteneur.innerHTML = TEMPLATE_RESULTAT(htmlGagnant, "dsadwa");
 
 
     }
