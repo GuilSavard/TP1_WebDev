@@ -56,6 +56,4 @@ export class Joueur {
         this.#score = 0;
     }
 
-
-
 }

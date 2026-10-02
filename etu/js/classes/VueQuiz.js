@@ -89,6 +89,8 @@ export class VueQuiz {
 
 
 
+
+
         let htmlBadges = '';
 
 
@@ -111,9 +113,10 @@ export class VueQuiz {
         this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadges,this.quiz.questionActuelle.question,htmlOptions);
 
         do {
-
-        document.getElementById('id-option-grid').addEventListener('click', (ev) =>{
+            document.getElementById("nextBtn").push("disabled")
+            this.#quiz.document.getElementById('id-option-grid').addEventListener('click', (ev) =>{
             let indexchanger
+
 
            indexchanger = handleChoixDeReponse(ev, this.#quiz)
             //mettre resultat dans html otions
