@@ -87,6 +87,10 @@ export class VueQuiz {
         let reponseChoisie = this.quiz.reponseChoisie;
 
 
+
+
+
+
         let htmlBadges = '';
 
 
@@ -103,16 +107,16 @@ export class VueQuiz {
         }
 
 
-        this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadges, this.quiz.questionActuelle.question, htmlOptions);
+
+        this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadges,this.quiz.questionActuelle.question,htmlOptions);
 
 
         do {
-
             let indexchanger
-            this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadges, this.quiz.questionActuelle.question, htmlOptions);
-            let htmlBadgesRepondu = "";
-            let htmlOptionsRepondu = "";
-            document.getElementById('id-option-grid').addEventListener('click', (ev) => {
+        this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadges, this.quiz.questionActuelle.question, htmlOptions);
+        let htmlBadgesRepondu = "";
+        let htmlOptionsRepondu = "";
+        document.getElementById('id-option-grid').addEventListener('click', (ev) => {
 
 
 
@@ -127,21 +131,25 @@ export class VueQuiz {
                     htmlBadgesRepondu += '' + TEMPLATE_BADGE_JOUEUR(this.#quiz.joueurActuel === this.#quiz.joueurs[i], this.#quiz.joueurs[i].nom, this.#quiz.joueurs[i].score);
                 }
 
-                this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadgesRepondu, this.quiz.questionActuelle.question, htmlOptionsRepondu);
-                //mettre resultat dans html otions
+            this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadgesRepondu, this.quiz.questionActuelle.question, htmlOptionsRepondu);
+            //mettre resultat dans html otions
 
-            })
+        })
 
 
             document.getElementById("nextBtn").addEventListener('click',
                 (ev) => {
                     handleQuestionSuivante(ev, this.#quiz)
                 }
-            );
-        } while (this.#quiz.gagnant !== null)
 
-        this.#quiz.suivant();
-    }
+            );
+        }while(this.#quiz.gagnant === null)
+        document.getElementById('nextBtn').addEventListener('click',
+            (ev) => {
+                handleQuestionSuivante(ev, this.#quiz)
+            }
+        );
+        }
 
 
 
