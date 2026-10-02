@@ -105,6 +105,7 @@ export class VueQuiz {
 
         this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadges, this.quiz.questionActuelle.question, htmlOptions);
 
+
         do {
 
             let indexchanger
@@ -112,6 +113,7 @@ export class VueQuiz {
             let htmlBadgesRepondu = "";
             let htmlOptionsRepondu = "";
             document.getElementById('id-option-grid').addEventListener('click', (ev) => {
+
 
 
                 reponseChoisie = handleChoixDeReponse(ev, this.#quiz)
@@ -131,17 +133,14 @@ export class VueQuiz {
             })
 
 
-            document.getElementById('nextBtn').addEventListener('click',
+            document.getElementById("nextBtn").addEventListener('click',
                 (ev) => {
                     handleQuestionSuivante(ev, this.#quiz)
                 }
             );
-        } while (this.#quiz.gagnant === null)
-        document.getElementById('nextBtn').addEventListener('click',
-            (ev) => {
-                handleQuestionSuivante(ev, this.#quiz)
-            }
-        );
+        } while (this.#quiz.gagnant !== null)
+
+        this.#quiz.suivant();
     }
 
 
