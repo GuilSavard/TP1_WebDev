@@ -95,10 +95,8 @@ export class VueQuiz {
 
 
         for (let i = 0; i < b.length; i++) {
-
-            htmlBadges +='' + TEMPLATE_BADGE_JOUEUR(this.#quiz.joueurActuel === this.#quiz.joueurs[i], this.#quiz.joueurs[i].nom, this.#quiz.joueurs[i].score);
+            htmlBadges += '' + TEMPLATE_BADGE_JOUEUR(this.#quiz.joueurActuel === this.#quiz.joueurs[i], this.#quiz.joueurs[i].nom, this.#quiz.joueurs[i].score);
         }
-
 
 
         let htmlOptions = '';
@@ -116,10 +114,26 @@ export class VueQuiz {
             document.getElementById("nextBtn").push("disabled")
             this.#quiz.document.getElementById('id-option-grid').addEventListener('click', (ev) =>{
             let indexchanger
+        this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadges, this.quiz.questionActuelle.question, htmlOptions);
+        let htmlBadgesRepondu = "";
+        let htmlOptionsRepondu = "";
+        document.getElementById('id-option-grid').addEventListener('click', (ev) => {
 
 
-           indexchanger = handleChoixDeReponse(ev, this.#quiz)
+            reponseChoisie = handleChoixDeReponse(ev, this.#quiz)
+            estRepondu = !estRepondu
+            for (let i = 0; i < q.options.length; i++) {
+                const option = q.options[i];
+                const classes = this.#determinerClasseAppropriee(i, q, estRepondu, reponseChoisie);
+                htmlOptionsRepondu += '' + TEMPLATE_OPTION(classes, i, q.lettreA(i), option);
+            }
+            for (let i = 0; i < b.length; i++) {
+                htmlBadgesRepondu += '' + TEMPLATE_BADGE_JOUEUR(this.#quiz.joueurActuel === this.#quiz.joueurs[i], this.#quiz.joueurs[i].nom, this.#quiz.joueurs[i].score);
+            }
+
+            this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadgesRepondu, this.quiz.questionActuelle.question, htmlOptionsRepondu);
             //mettre resultat dans html otions
+
         })
 
 
@@ -130,6 +144,11 @@ export class VueQuiz {
 
             );
         }while(this.#quiz.gagnant === null)
+        document.getElementById('nextBtn').addEventListener('click',
+            (ev) => {
+                handleQuestionSuivante(ev, this.#quiz)
+            }
+        );
 
     }
 
@@ -139,7 +158,11 @@ export class VueQuiz {
     // ---------- Écran de résultat ----------
     #afficheResultat() {
         //todo
-        this.#conteneur.innerHTML = TEMPLATE_RESULTAT;
+        let gagnant = Joueur
+        gagnant = this.#quiz.gagnant
+        let htmlGagnant
+        htmlGagnant += '' + TEMPLATE_BADGE_JOUEUR(false, gagnant.nom, gagnant.score);
+        this.#conteneur.innerHTML = TEMPLATE_RESULTAT(htmlGagnant, "dsadwa");
 
 
     }
