@@ -155,7 +155,6 @@ export class Quiz {
         }
 
         this.#indexJoueurActuel = this.autreJoueur
-
     }
 
     /**
