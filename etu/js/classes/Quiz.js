@@ -148,6 +148,7 @@ export class Quiz {
      * Termine le quiz si on était à la dernière question.
      */
     suivant() {
+        let compare;
 
         if (this.#indexQuestionActuelle < this.#questions.length) {
             this.#indexQuestionActuelle += 1;
@@ -160,6 +161,8 @@ export class Quiz {
         }else {
             this.#indexJoueurActuel = this.#indexJoueurActuel - 1
         }
+
+
 
         this.#reinitialiserReponsesChoisies()
         this.#rafraichirAffichage()
