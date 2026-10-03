@@ -36,6 +36,7 @@ export class Quiz {
         this.#indexQuestionActuelle = this.#trouveNombreAleatoire(0, this.#questionsAVenir.length - 1)();
 
         this.#reinitialiserReponsesChoisies();
+
     }
 
     // ---------- Getters ----------
@@ -154,7 +155,14 @@ export class Quiz {
             this.#estTermine = true;
         }
 
-        this.#indexJoueurActuel = this.autreJoueur
+        if (this.#indexJoueurActuel === 0){
+            this.#indexJoueurActuel = this.#indexJoueurActuel + 1
+        }else {
+            this.#indexJoueurActuel = this.#indexJoueurActuel - 1
+        }
+
+        this.#reinitialiserReponsesChoisies()
+        this.#rafraichirAffichage()
     }
 
     /**

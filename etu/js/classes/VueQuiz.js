@@ -113,7 +113,7 @@ export class VueQuiz {
 
 
 
-        do {
+
             let indexchanger
         this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadges, this.quiz.questionActuelle.question, htmlOptions);
         let htmlBadgesRepondu = "";
@@ -135,18 +135,16 @@ export class VueQuiz {
 
             this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadgesRepondu, this.quiz.questionActuelle.question, htmlOptionsRepondu);
             //mettre resultat dans html otions
+            document.getElementById('nextBtn').addEventListener('click',
+                (ev) => {
+                    handleQuestionSuivante(ev, this.#quiz)
+                }
+            );
 
         });
 
 
 
-        }while(this.#quiz.gagnant === null)
-        document.getElementById('nextBtn').addEventListener('click',
-            (ev) => {
-
-                handleQuestionSuivante(ev, this.#quiz)
-            }
-        );
         }
 
 
