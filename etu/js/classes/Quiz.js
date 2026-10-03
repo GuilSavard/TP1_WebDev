@@ -105,7 +105,6 @@ export class Quiz {
      * @returns {Joueur|null}
      */
     get gagnant() {
-        //todo
         let retour = null;
         const [p1, p2] = this.#joueurs;
         const cmp = p1.comparerA(p2);
@@ -131,6 +130,7 @@ export class Quiz {
      * Démarre une nouvelle partie avec deux joueurs.
      */
     demarrer(nomJoueur1, nomJoueur2) {
+        this.#questionsAVenir = [...this.#questions];
         this.#joueurs = [new Joueur(nomJoueur1), new Joueur(nomJoueur2)];
         this.#indexJoueurActuel = 0;
         this.#indexQuestionActuelle = this.#trouveNombreAleatoire(0, this.#questionsAVenir.length - 1)();

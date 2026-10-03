@@ -34,7 +34,6 @@ return index
 }
 
 export function handleQuestionSuivante(ev, quiz) {
-    //todo lorsque reponse selectioner boton a on
 
     const boutonSuivant = ev.target;
     if (!boutonSuivant.disabled) {
