@@ -91,7 +91,6 @@ export class VueQuiz {
 
 
 
-
         let htmlBadges = '';
 
 
@@ -143,6 +142,9 @@ export class VueQuiz {
 
         });
 
+        let btnSuivant = document.querySelector("#nextBtn")
+
+        btnSuivant.setAttribute("disabled", "")
 
 
         }
