@@ -36,6 +36,7 @@ export class Quiz {
         this.#indexQuestionActuelle = this.#trouveNombreAleatoire(0, this.#questionsAVenir.length - 1)();
 
         this.#reinitialiserReponsesChoisies();
+
     }
 
     // ---------- Getters ----------
@@ -108,8 +109,16 @@ export class Quiz {
         let retour = null;
         const [p1, p2] = this.#joueurs;
         const cmp = p1.comparerA(p2);
-        if (cmp > DIFFERENCE_DE_SCORE_POUR_GAGNER - 1) retour = p1;
-        if (cmp < DIFFERENCE_DE_SCORE_POUR_GAGNER - 1) retour = p2;
+        if (cmp > 0) {
+            if (p1.score - p2.score > 1) {
+                retour = p1;
+            }
+        }
+        if (cmp < 0) {
+            if (p2.score - p1.score > 1) {
+                retour = p2;
+            }
+        }
         return retour;
     }
 
@@ -137,9 +146,9 @@ export class Quiz {
      * @param {number} indexSelectionne
      */
     repondre(indexSelectionne) {
-//donne un point et probs plus
+        //donne un point et probs plus
         this.joueurActuel.ajouterPoint()
-//todo
+        //todo
     }
 
     /**
@@ -147,14 +156,26 @@ export class Quiz {
      * Termine le quiz si on était à la dernière question.
      */
     suivant() {
-
+        let compare;
+let ga = this.gagnant
         if (this.#indexQuestionActuelle < this.#questions.length) {
             this.#indexQuestionActuelle += 1;
         } else {
             this.#estTermine = true;
         }
 
-        this.#indexJoueurActuel = this.autreJoueur
+        if (this.#indexJoueurActuel === 0) {
+            this.#indexJoueurActuel = this.#indexJoueurActuel + 1
+        } else {
+            this.#indexJoueurActuel = this.#indexJoueurActuel - 1
+        }
+
+        if (ga !== null) {
+            this.#estTermine = true;
+        }
+
+        this.#reinitialiserReponsesChoisies()
+        this.#rafraichirAffichage()
     }
 
     /**

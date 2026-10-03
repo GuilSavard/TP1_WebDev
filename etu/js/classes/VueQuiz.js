@@ -4,10 +4,11 @@
 
 import {
     TEMPLATE_BADGE_JOUEUR,
-    TEMPLATE_BIENVENUE, TEMPLATE_OPTION, TEMPLATE_QUIZ, TEMPLATE_RESULTAT
+    TEMPLATE_BIENVENUE, TEMPLATE_OPTION, TEMPLATE_QUIZ, TEMPLATE_RESULTAT, TEMPLATE_JOUEUR_RESULTAT
 } from "../VuesDynamiques.js";
 import {handleChoixDeReponse, handleDemarrer, handleQuestionSuivante, handleRecommancer} from "../evenements.js";
 import {Quiz} from "./Quiz.js";
+import {Joueur} from "./Joueur.js";
 
 /**
  * Classe VueQuiz
@@ -90,7 +91,6 @@ export class VueQuiz {
 
 
 
-
         let htmlBadges = '';
 
 
@@ -110,7 +110,9 @@ export class VueQuiz {
 
         this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadges,this.quiz.questionActuelle.question,htmlOptions);
 
-        do {
+
+
+
             let indexchanger
         this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadges, this.quiz.questionActuelle.question, htmlOptions);
         let htmlBadgesRepondu = "";
@@ -118,35 +120,34 @@ export class VueQuiz {
         document.getElementById('id-option-grid').addEventListener('click', (ev) => {
 
 
-            reponseChoisie = handleChoixDeReponse(ev, this.#quiz)
-            estRepondu = !estRepondu
-            for (let i = 0; i < q.options.length; i++) {
-                const option = q.options[i];
-                const classes = this.#determinerClasseAppropriee(i, q, estRepondu, reponseChoisie);
-                htmlOptionsRepondu += '' + TEMPLATE_OPTION(classes, i, q.lettreA(i), option);
-            }
-            for (let i = 0; i < b.length; i++) {
-                htmlBadgesRepondu += '' + TEMPLATE_BADGE_JOUEUR(this.#quiz.joueurActuel === this.#quiz.joueurs[i], this.#quiz.joueurs[i].nom, this.#quiz.joueurs[i].score);
-            }
+
+                reponseChoisie = handleChoixDeReponse(ev, this.#quiz)
+                if (this.#quiz.estTermine) return;
+                estRepondu = !estRepondu
+                for (let i = 0; i < q.options.length; i++) {
+                    const option = q.options[i];
+                    const classes = this.#determinerClasseAppropriee(i, q, estRepondu, reponseChoisie);
+                    htmlOptionsRepondu += '' + TEMPLATE_OPTION(classes, i, q.lettreA(i), option);
+                }
+                for (let i = 0; i < b.length; i++) {
+                    htmlBadgesRepondu += '' + TEMPLATE_BADGE_JOUEUR(this.#quiz.joueurActuel === this.#quiz.joueurs[i], this.#quiz.joueurs[i].nom, this.#quiz.joueurs[i].score);
+                }
 
             this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadgesRepondu, this.quiz.questionActuelle.question, htmlOptionsRepondu);
             //mettre resultat dans html otions
-
-        })
-
-
             document.getElementById('nextBtn').addEventListener('click',
                 (ev) => {
                     handleQuestionSuivante(ev, this.#quiz)
                 }
-
             );
-        }while(this.#quiz.gagnant === null)
-        document.getElementById('nextBtn').addEventListener('click',
-            (ev) => {
-                handleQuestionSuivante(ev, this.#quiz)
-            }
-        );
+
+        });
+
+        let btnSuivant = document.querySelector("#nextBtn")
+
+        btnSuivant.setAttribute("disabled", "")
+
+
         }
 
 
@@ -155,12 +156,18 @@ export class VueQuiz {
 
     // ---------- Écran de résultat ----------
     #afficheResultat() {
-        //todo
-        let gagnant = Joueur
-        gagnant = this.#quiz.gagnant
-        let htmlGagnant
-        htmlGagnant += '' + TEMPLATE_BADGE_JOUEUR(false, gagnant.nom, gagnant.score);
-        this.#conteneur.innerHTML = TEMPLATE_RESULTAT(htmlGagnant, "dsadwa");
+        const gagnant = this.#quiz.gagnant;
+
+        let htmlJoueurs = '';
+        for (const j of this.#quiz.joueurs) {
+            htmlJoueurs += TEMPLATE_JOUEUR_RESULTAT(j.nom, j.score, j === gagnant);
+        }
+
+        this.#conteneur.innerHTML = TEMPLATE_RESULTAT(htmlJoueurs, `🏆 ${gagnant.nom} remporte la partie !`);
+
+        document.getElementById('restartBtn').addEventListener('click', (ev) => {
+            handleRecommancer(ev, this.#quiz);
+        });
 
 
     }
