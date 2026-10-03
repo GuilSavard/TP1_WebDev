@@ -32,7 +32,7 @@ export class Question {
      */
     lettreA(index) {
         let choix = "";
-        switch (index){
+        switch (index) {
             case (0):
                 choix = "A."
                 break
@@ -47,7 +47,6 @@ export class Question {
                 break
 
 
-
         }
 
 
@@ -56,7 +55,7 @@ export class Question {
 
     estCorrect(index) {
         let cor = false;
-        if(index === this.#indexCorrect){
+        if (index === this.#indexCorrect) {
             cor = true;
         }
         return cor;

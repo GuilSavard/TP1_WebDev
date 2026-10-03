@@ -27,13 +27,14 @@ export const TEMPLATE_OPTION = (classes, index, lettre, option) => `
     
 `;
 
-// Compléter TEMPLATE_BADGE_JOUEUR
+
 
 //TEST
 export const TEMPLATE_BADGE_JOUEUR = (active, name, score) => {
     let s = ""
 
-    if(active){s = `
+    if (active) {
+        s = `
    
    
     
@@ -45,9 +46,9 @@ export const TEMPLATE_BADGE_JOUEUR = (active, name, score) => {
        
     </div>
 
-`}
-else {
-       s = `
+`
+    } else {
+        s = `
    
    
     
@@ -60,14 +61,14 @@ else {
 
 `
     }
- return s
+    return s
 };
 
-// Compléter TEMPLATE_QUIZ
+
 
 
 // player-status,subtitle,question-text
-export const TEMPLATE_QUIZ = (badge, question, option) =>  `
+export const TEMPLATE_QUIZ = (badge, question, option) => `
    
     <h1>🧠 Quiz</h1>
     <p class="subtitle">Tour par tour</p>
@@ -103,7 +104,7 @@ export const TEMPLATE_JOUEUR_RESULTAT = (nom, score, estGagnant, htmlIcones = ''
     </div>
 `;
 
-export const TEMPLATE_RESULTAT = (htmlJoueurs, messageGagnant ) => `
+export const TEMPLATE_RESULTAT = (htmlJoueurs, messageGagnant) => `
     <h1>🧠 Quiz</h1>
     <p class="subtitle">Résultat final</p>
 

@@ -20,39 +20,39 @@ export class Joueur {
      */
     comparerA(autre) {
         let comp
-        if (this.#score > autre.#score){
+        if (this.#score > autre.#score) {
             comp = 1;
-        }
-        else if(this.#score < autre.#score){
+        } else if (this.#score < autre.#score) {
             comp = -1;
-        }
-        else {
+        } else {
             comp = 0;
         }
         return comp;
 
     }
-    get nom(){
+
+    get nom() {
         return this.#nom;
     }
 
-    set nom(nom){
+    set nom(nom) {
 
         this.#nom = nom;
     }
-    get score(){
+
+    get score() {
         return this.#score;
     }
 
-    set score(score){
+    set score(score) {
         this.#score = score;
     }
 
-    ajouterPoint(){
+    ajouterPoint() {
         this.#score += 1;
     }
 
-    reinitialiser(){
+    reinitialiser() {
         this.#score = 0;
     }
 

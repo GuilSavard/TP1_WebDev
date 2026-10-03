@@ -146,9 +146,9 @@ export class Quiz {
      * @param {number} indexSelectionne
      */
     repondre(indexSelectionne) {
-        //donne un point et probs plus
+
         this.joueurActuel.ajouterPoint()
-        //todo
+
     }
 
     /**
@@ -157,7 +157,7 @@ export class Quiz {
      */
     suivant() {
         let compare;
-let ga = this.gagnant
+        let ga = this.gagnant
         if (this.#indexQuestionActuelle < this.#questions.length) {
             this.#indexQuestionActuelle += 1;
         } else {

@@ -4,7 +4,7 @@
 
 import {
     TEMPLATE_BADGE_JOUEUR,
-    TEMPLATE_BIENVENUE, TEMPLATE_OPTION, TEMPLATE_QUIZ, TEMPLATE_RESULTAT,TEMPLATE_JOUEUR_RESULTAT
+    TEMPLATE_BIENVENUE, TEMPLATE_OPTION, TEMPLATE_QUIZ, TEMPLATE_RESULTAT, TEMPLATE_JOUEUR_RESULTAT
 } from "../VuesDynamiques.js";
 import {handleChoixDeReponse, handleDemarrer, handleQuestionSuivante, handleRecommancer} from "../evenements.js";
 import {Quiz} from "./Quiz.js";
@@ -38,7 +38,7 @@ export class VueQuiz {
         return [...this.#nomsJoueurs];
     }
 
-    set nomsJoueurs(nomJoueurs){
+    set nomsJoueurs(nomJoueurs) {
         this.#nomsJoueurs = nomJoueurs
     }
 
@@ -88,9 +88,6 @@ export class VueQuiz {
         let reponseChoisie = this.quiz.reponseChoisie;
 
 
-
-
-
         let htmlBadges = '';
 
 
@@ -107,10 +104,7 @@ export class VueQuiz {
         }
 
 
-
-        this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadges,this.quiz.questionActuelle.question,htmlOptions);
-
-
+        this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadges, this.quiz.questionActuelle.question, htmlOptions);
 
 
         let indexchanger
@@ -118,7 +112,6 @@ export class VueQuiz {
         let htmlBadgesRepondu = "";
         let htmlOptionsRepondu = "";
         document.getElementById('id-option-grid').addEventListener('click', (ev) => {
-
 
 
             reponseChoisie = handleChoixDeReponse(ev, this.#quiz)
@@ -149,9 +142,6 @@ export class VueQuiz {
 
 
     }
-
-
-
 
 
     // ---------- Écran de résultat ----------

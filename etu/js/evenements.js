@@ -30,7 +30,7 @@ export function handleChoixDeReponse(ev, quiz) {
     if (quiz.questionActuelle.estCorrect(index)) {
         quiz.repondre(index);
     }
-return index
+    return index
 }
 
 export function handleQuestionSuivante(ev, quiz) {
