@@ -8,6 +8,7 @@ import {
 } from "../VuesDynamiques.js";
 import {handleChoixDeReponse, handleDemarrer, handleQuestionSuivante, handleRecommancer} from "../evenements.js";
 import {Quiz} from "./Quiz.js";
+import {Joueur} from "./Joueur.js";
 
 /**
  * Classe VueQuiz
@@ -111,6 +112,7 @@ export class VueQuiz {
         this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadges,this.quiz.questionActuelle.question,htmlOptions);
 
 
+
         do {
             let indexchanger
         this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadges, this.quiz.questionActuelle.question, htmlOptions);
@@ -134,18 +136,14 @@ export class VueQuiz {
             this.#conteneur.innerHTML = TEMPLATE_QUIZ(htmlBadgesRepondu, this.quiz.questionActuelle.question, htmlOptionsRepondu);
             //mettre resultat dans html otions
 
-        })
+        });
 
 
-            document.getElementById("nextBtn").addEventListener('click',
-                (ev) => {
-                    handleQuestionSuivante(ev, this.#quiz)
-                }
 
-            );
         }while(this.#quiz.gagnant === null)
         document.getElementById('nextBtn').addEventListener('click',
             (ev) => {
+
                 handleQuestionSuivante(ev, this.#quiz)
             }
         );

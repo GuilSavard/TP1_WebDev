@@ -137,9 +137,9 @@ export class Quiz {
      * @param {number} indexSelectionne
      */
     repondre(indexSelectionne) {
-//donne un point et probs plus
+    //donne un point et probs plus
         this.joueurActuel.ajouterPoint()
-//todo
+    //todo
     }
 
     /**
